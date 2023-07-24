@@ -1,4 +1,8 @@
-const Hangedman = () => {
+interface Props {
+    guesses: number;
+}
+
+const Hangedman = ({ guesses }: Props) => {
     const stand = (
         <>
             <div className="absolute right-0 top-0 h-12 w-2 rounded-md bg-zinc-700" />
@@ -18,12 +22,12 @@ const Hangedman = () => {
     return (
         <div className="relative">
             {stand}
-            {head}
-            {body}
-            {rightHand}
-            {leftHand}
-            {rightLeg}
-            {leftLeg}
+            {guesses > 0 && head}
+            {guesses > 1 && body}
+            {guesses > 2 && rightHand}
+            {guesses > 3 && leftHand}
+            {guesses > 4 && rightLeg}
+            {guesses > 5 && leftLeg}
         </div>
     );
 };
