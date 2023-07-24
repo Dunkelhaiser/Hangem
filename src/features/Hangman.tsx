@@ -1,4 +1,5 @@
 import Hangedman from "../components/Hangedman";
+import Keyboard from "../components/Keyboard";
 import Word from "../components/Word";
 
 const Hangman = () => {
@@ -6,6 +7,7 @@ const Hangman = () => {
         <>
             <Hangedman />
             <Word />
+            <Keyboard />
         </>
     );
 };
