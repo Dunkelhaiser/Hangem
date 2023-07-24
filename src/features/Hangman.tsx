@@ -33,7 +33,6 @@ const Hangman = () => {
 
     return (
         <>
-            <h1 className="text-center text-4xl font-bold">Hangman</h1>
             <div className="flex justify-center gap-2">
                 <span>{haveLost && "You loose"}</span>
                 <span>{haveWon && "You won"}</span>
