@@ -4,7 +4,7 @@ import Keyboard from "../components/Keyboard";
 import Word from "../components/Word";
 
 const Hangman = () => {
-    const [guessingWord, setGuessingWord] = useState("korean");
+    const [guessingWord] = useState("korean");
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
     const incorrectLetters = guessedLetters.filter((letter) => !guessingWord.includes(letter));

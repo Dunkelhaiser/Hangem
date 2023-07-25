@@ -9,7 +9,7 @@ interface Props {
 const Word = ({ guessingWord, guessedLetters, reveal }: Props) => {
     const [word] = useState(guessingWord);
     return (
-        <div className="flex max-w-7xl flex-wrap gap-[0.25em] font-mono text-8xl font-bold uppercase text-zinc-800">
+        <div className="flex max-w-7xl flex-wrap gap-[0.25em] font-mono text-7xl font-bold uppercase text-zinc-800">
             {word.split("").map((letter, i) => {
                 return (
                     <span key={`${letter} ${i + 1}`} className="border-b-8 border-zinc-800">
