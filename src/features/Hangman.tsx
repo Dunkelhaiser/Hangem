@@ -4,7 +4,7 @@ import { generate } from "random-words";
 import Hangedman from "../components/Hangedman";
 import Keyboard from "../components/Keyboard";
 import Word from "../components/Word";
-import { removeWhitespaces, sanitizeWord } from "../utils/SanitizeWord";
+import { removeWhitespaces, sanitizeWord } from "../utils/sanitizeWord";
 
 const Hangman = () => {
     const [guessingWord, setGuessingWord] = useState("");
