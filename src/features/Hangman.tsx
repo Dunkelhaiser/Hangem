@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import Hangedman from "../components/Hangedman";
 import Keyboard from "../components/Keyboard";
 import Word from "../components/Word";
@@ -31,12 +32,13 @@ const Hangman = () => {
         return () => window.removeEventListener("keydown", handleKeyDown);
     }, [guessedLetters]);
 
+    useEffect(() => {
+        if (haveLost) toast.error("You lost!");
+        if (haveWon) toast.success("You won!");
+    }, [haveLost, haveWon]);
+
     return (
         <>
-            <div className="flex justify-center gap-2">
-                <span>{haveLost && "You loose"}</span>
-                <span>{haveWon && "You won"}</span>
-            </div>
             <Hangedman guesses={incorrectLetters.length} />
             <Word reveal={haveLost} guessingWord={guessingWord} guessedLetters={guessedLetters} />
             <Keyboard
