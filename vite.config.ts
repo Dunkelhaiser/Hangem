@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import { VitePWA } from "vite-plugin-pwa";
@@ -31,5 +32,5 @@ export default defineConfig({
                 theme_color: "#1a1c22",
             },
         }),
-    ]
+    ],
 });
