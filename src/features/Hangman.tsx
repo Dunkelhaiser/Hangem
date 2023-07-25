@@ -4,16 +4,20 @@ import { generate } from "random-words";
 import Hangedman from "../components/Hangedman";
 import Keyboard from "../components/Keyboard";
 import Word from "../components/Word";
+import { removeWhitespaces, sanitizeWord } from "../utils/SanitizeWord";
 
 const Hangman = () => {
-    const [guessingWord, setGuessingWord] = useState(" ");
+    const [guessingWord, setGuessingWord] = useState("");
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
     const incorrectLetters = guessedLetters.filter((letter) => !guessingWord.includes(letter));
     const correctLetters = guessedLetters.filter((letter) => guessingWord.includes(letter));
 
     const haveLost = incorrectLetters.length >= 6;
-    const haveWon = guessingWord.split("").every((letter) => guessedLetters.includes(letter));
+    const haveWon =
+        removeWhitespaces(guessingWord)
+            .split("")
+            .every((letter) => guessedLetters.includes(letter)) && guessingWord.length > 0;
 
     const addGuessedLetter = useCallback(
         (letter: string) => {
@@ -25,7 +29,7 @@ const Hangman = () => {
 
     useEffect(() => {
         const word = generate({ exactly: 1, minLength: 5 })[0];
-        setGuessingWord(word);
+        setGuessingWord(sanitizeWord(word));
     }, []);
 
     useEffect(() => {
