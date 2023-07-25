@@ -1,11 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { generate } from "random-words";
 import Hangedman from "../components/Hangedman";
 import Keyboard from "../components/Keyboard";
 import Word from "../components/Word";
 
 const Hangman = () => {
-    const [guessingWord] = useState("korean");
+    const [guessingWord, setGuessingWord] = useState(" ");
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
     const incorrectLetters = guessedLetters.filter((letter) => !guessingWord.includes(letter));
@@ -21,6 +22,11 @@ const Hangman = () => {
         },
         [guessedLetters]
     );
+
+    useEffect(() => {
+        const word = generate({ exactly: 1, minLength: 5 })[0];
+        setGuessingWord(word);
+    }, []);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Props {
     guessingWord: string;
@@ -7,7 +7,10 @@ interface Props {
 }
 
 const Word = ({ guessingWord, guessedLetters, reveal }: Props) => {
-    const [word] = useState(guessingWord);
+    const [word, setWord] = useState("");
+    useEffect(() => {
+        setWord(guessingWord);
+    }, [guessingWord]);
     return (
         <div className="flex max-w-7xl flex-wrap gap-[0.25em] font-mono text-7xl font-bold uppercase text-zinc-800">
             {word.split("").map((letter, i) => {
