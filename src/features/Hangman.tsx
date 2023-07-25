@@ -27,9 +27,14 @@ const Hangman = () => {
         [guessedLetters]
     );
 
-    useEffect(() => {
+    const generateNewWord = useCallback(() => {
         const word = generate({ exactly: 1, minLength: 5 })[0];
         setGuessingWord(sanitizeWord(word));
+        setGuessedLetters([]);
+    }, []);
+
+    useEffect(() => {
+        generateNewWord();
     }, []);
 
     useEffect(() => {
@@ -56,6 +61,7 @@ const Hangman = () => {
                 incorrectLetters={incorrectLetters}
                 addGuessedLetter={addGuessedLetter}
                 disabled={haveLost || haveWon}
+                reset={generateNewWord}
             />
         </>
     );
