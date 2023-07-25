@@ -1,13 +1,24 @@
-import { Toaster } from "react-hot-toast";
-import Hangman from "./features/Hangman";
+import { Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import Hangman from "./pages/Hangman";
+import Wrapper from "./pages/Wrapper";
+import Generate from "./pages/Generate";
+
+const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route path="/" element={<Wrapper />}>
+            <Route index element={<Hangman />} />
+            <Route path="home" element={<Navigate to="/" />} />
+            <Route path="index" element={<Navigate to="/" />} />
+            <Route path="generate" element={<Generate />} />
+            <Route path="/:id" element={<Hangman />} />
+
+            {/* <Route path="*" element={<NotFound />} /> */}
+        </Route>
+    )
+);
 
 function App() {
-    return (
-        <main className="dark:bg-dark-700  flex  min-h-screen flex-col items-center justify-center gap-6 bg-stone-100 p-4">
-            <Toaster />
-            <Hangman />
-        </main>
-    );
+    return <RouterProvider router={router} />;
 }
 
 export default App;

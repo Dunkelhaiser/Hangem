@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { generate } from "random-words";
 import Hangedman from "../components/Hangedman";
@@ -7,6 +8,7 @@ import Word from "../components/Word";
 import { removeWhitespaces, sanitizeWord } from "../utils/sanitizeWord";
 
 const Hangman = () => {
+    const params = useParams();
     const [guessingWord, setGuessingWord] = useState("");
     const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
 
@@ -34,6 +36,12 @@ const Hangman = () => {
     }, []);
 
     useEffect(() => {
+        if (params.id) {
+            try {
+                setGuessingWord(sanitizeWord(atob(params.id)));
+                return;
+            } catch (e) {}
+        }
         generateNewWord();
     }, []);
 
@@ -63,6 +71,13 @@ const Hangman = () => {
                 disabled={haveLost || haveWon}
                 reset={generateNewWord}
             />
+            <Link
+                to="/generate"
+                className="text-slate-500 underline transition hover:text-slate-400 focus-visible:text-slate-400 active:text-slate-600"
+                onClick={generateNewWord}
+            >
+                Generate own word
+            </Link>
         </>
     );
 };

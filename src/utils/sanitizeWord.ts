@@ -8,3 +8,8 @@ export const removeWhitespaces = (word: string) => {
     const result = word.replace(/\s/g, "");
     return result;
 };
+
+export const onlyLatin = (word: string) => {
+    const latinLettersRegex = /^[A-Za-z\s]+$/;
+    return latinLettersRegex.test(word);
+};
