@@ -1,7 +1,9 @@
 import { Navigate, Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from "react-router-dom";
+import { lazy } from "react";
 import Hangman from "./pages/Hangman";
 import Wrapper from "./pages/Wrapper";
-import Generate from "./pages/Generate";
+
+const Generate = lazy(() => import("./pages/Generate"));
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -11,8 +13,6 @@ const router = createBrowserRouter(
             <Route path="index" element={<Navigate to="/" />} />
             <Route path="generate" element={<Generate />} />
             <Route path="/:id" element={<Hangman />} />
-
-            {/* <Route path="*" element={<NotFound />} /> */}
         </Route>
     )
 );
