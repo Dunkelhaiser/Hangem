@@ -8,11 +8,11 @@
     Simple hangman game with sharing functionality.
     <br />
     <br />
-    <a href="https://hangem.netlify.app">Live View</a>
+    <a href="https://hangem.pages.dev">Live View</a>
     ·
-    <a href="https://github.com/KaeserOfHonour/Hangem/issues">Report Bug</a>
+    <a href="https://github.com/Dunkelhaiser/Hangem/issues">Report Bug</a>
     ·
-    <a href="https://github.com/KaeserOfHonour/Hangem/issues">Request Feature</a>
+    <a href="https://github.com/Dunkelhaiser/Hangem/issues">Request Feature</a>
   </p>
 </div>
 
